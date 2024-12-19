@@ -49,6 +49,7 @@ body {
   border-radius: 5px;
   position: relative;
   transition: color 0.3s ease, text-shadow 0.3s ease, background-color 0.3s ease;
+  white-space: nowrap; /* 添加这行代码，强制不换行 */
 }
 
 .navbar ul li a::before {
@@ -88,11 +89,7 @@ body {
   transform: scale(1.2);
   color: #ff66cc; /* 悬停时图标颜色改为粉色 */
 }
-@media (max-width: 768px) {
-  .navbar ul li a {
-    font-size: 9px; /* 原来的一半大小 */
-  }
-}
+
 
 
 /* 搜索栏样式 */
@@ -183,13 +180,7 @@ body {
 }
 
 
-/* 手机端导航栏样式 */
-@media (max-width: 768px) {
-  .navbar ul {
-    flex-direction: column; /* 垂直排列 */
-    width: 100%;
-    padding: 0; /* 确保没有内边距 */
-  }
+
 
   .navbar ul li {
     margin: 5px 0; /* 减少上下间距 */
@@ -209,7 +200,7 @@ body {
   .carousel-image {
     height: 200px;
   }
-}
+
 
 /* 热门测评手机列表样式 */
 .hot-phones-section {
@@ -355,28 +346,7 @@ body {
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
-/* 适应屏幕宽度变化 */
-@media (max-width: 768px) {
-  .ranking-col:nth-child(-n+3) {
-    flex-basis: 100%;
-  }
-  .ranking-col:nth-child(n+4) {
-    flex-basis: 100%;
-  }
-}
 
-@media (max-width: 1200px) {
-  .ranking-col {
-    max-width: calc(50% - 20px);
-  }
-}
-
-@media (max-width: 768px) {
-  .ranking-col {
-    max-width: 100%;
-    margin-right: 0;
-  }
-}
 
 /* 热点资讯样式 */
 .hot-news-section {
@@ -648,28 +618,7 @@ body.night-mode {
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
-/* 适应屏幕宽度变化 */
-@media (max-width: 768px) {
-  .ranking-col:nth-child(-n+3) {
-    flex-basis: 100%;
-  }
-  .ranking-col:nth-child(n+4) {
-    flex-basis: 100%;
-  }
-}
 
-@media (max-width: 1200px) {
-  .ranking-col {
-    max-width: calc(50% - 20px);
-  }
-}
-
-@media (max-width: 768px) {
-  .ranking-col {
-    max-width: 100%;
-    margin-right: 0;
-  }
-}
 
 /* 热点资讯样式 */
 .hot-news-section {
@@ -890,7 +839,75 @@ display: none; /* 默认不显示 */
   cursor: pointer;
 }
 
- 
+/* 媒体查询，针对手机端进行样式调整，确保导航栏选项一行显示四个项且布局符合要求 */
+@media (max-width: 768px) {
+  /* 导航栏样式调整 */
+ .navbar ul {
+      flex-direction: row; /* 改为水平排列 */
+      justify-content: space-around; /* 均匀分布选项 */
+      width: 100%;
+      padding: 0;
+  }
 
- 
+ .navbar ul li {
+      margin: 0; /* 去除上下间距 */
+      width: auto; /* 根据内容自适应宽度 */
+  }
 
+ .navbar ul li a {
+      font-size: 12px; /* 调整字体大小，确保一行能显示四个项，可根据实际情况微调 */
+      justify-content: center; /* 文字居中显示 */
+      padding: 8px 10px; /* 适当调整内边距 */
+      white-space: nowrap; /* 添加这行代码，确保手机端也不换行 */
+  }
+
+  /* 搜索栏样式，使其位于导航栏下方 */
+ .search-bar {
+      margin: 10px auto 0; /* 上方留一点间距，左右自动居中 */
+  }
+
+  /* 轮播图样式，位于导航栏和搜索栏下方 */
+ .carousel {
+      margin-top: 10px; /* 与上方搜索栏留一点间距 */
+      width: 95%;
+      height: auto;
+  }
+
+ .carousel-image {
+      height: 200px;
+  }
+}
+/* 手机端样式 */
+@media (max-width: 767px) {
+  .navbar {
+      display: flex;
+      flex-wrap: wrap; /* 允许导航项换行 */
+      justify-content: space-between; /* 导航项两端对齐 */
+      background-color: #f8f9fa;
+      padding: 10px;
+  }
+
+  .navbar a {
+      flex: 1; /* 导航项平均分配空间 */
+      text-align: center; /* 文本居中 */
+      padding: 10px 0; /* 垂直方向上增加间距 */
+  }
+
+  .search-box {
+      display: block; /* 显示搜索框 */
+      width: 100%;
+      padding: 10px;
+      background-color: #e9ecef;
+      margin-top: 10px; /* 与导航栏保持一定距离 */
+  }
+
+  .carousel {
+      width: 100%; /* 确保轮播图宽度与手机屏幕一致 */
+      margin-top: 10px; /* 与搜索框保持一定距离 */
+  }
+
+  .carousel img {
+      width: 100%;
+      height: auto; /* 保持图片比例 */
+  }
+}
